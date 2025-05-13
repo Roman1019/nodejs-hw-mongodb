@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import pino from 'pino-http';
 import 'dotenv/config';
-import { Contact } from './contacts.js';
+import { Contact } from './models/contacts.js';
 import mongoose from 'mongoose';
 
 function setupServer() {
