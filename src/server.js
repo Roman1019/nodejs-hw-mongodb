@@ -11,7 +11,7 @@ function setupServer() {
   app.use(cors());
   app.use(pino());
 
-  app.get('/api/contacts', async (req, res) => {
+  app.get('/contacts', async (req, res) => {
     try {
       const contacts = await Contact.find();
       res.status(200).json({
@@ -27,7 +27,7 @@ function setupServer() {
     }
   });
 
-  app.get('/api/contacts/:id', async (req, res) => {
+  app.get('/contacts/:id', async (req, res) => {
     const id = req.params.id;
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).json({ message: 'Invalid contact Id' });
