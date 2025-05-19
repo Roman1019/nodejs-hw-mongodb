@@ -29,7 +29,7 @@ export async function getContactByIDController(req, res) {
   const contact = await getContactById(contactId);
   console.log(contact);
   if (contact === null) {
-    return res.status(404).send({ message: 'Contact not found' });
+    throw createError(404, 'Contact not found');
   }
   res.status(200).json({
     status: 200,
@@ -64,7 +64,7 @@ export async function updateContactController(req, res) {
 export async function deleteContactController(req, res) {
   const contactId = req.params.contactId;
   const result = await deleteContact(contactId);
-  if (result === true) {
+  if (!result) {
     throw createError(404, 'Contact not found');
   }
   res.status(204).end();
