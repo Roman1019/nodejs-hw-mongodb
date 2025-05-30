@@ -5,19 +5,20 @@ import 'dotenv/config';
 import { router } from './router/contacts.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
+import authRouter from './router/auth.js';
 
 function setupServer() {
   const app = express();
+  app.use(cors());
+
+  app.use(pino());
 
   app.use('/contacts', router);
+  app.use('/auth', authRouter);
 
   app.use(errorHandler);
 
   app.use(notFoundHandler);
-
-  app.use(cors());
-
-  app.use(pino());
 
   app.use((req, res) => {
     res.status(404).json({ message: 'Not found' });
