@@ -3,6 +3,7 @@ export function ctrlWrapper(controller) {
     try {
       await controller(req, res, next);
     } catch (error) {
+      console.error('❌ Помилка в loginController:', error);
       next(error);
     }
   };

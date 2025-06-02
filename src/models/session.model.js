@@ -1,27 +1,32 @@
-import { required } from 'joi';
 import mongoose from 'mongoose';
 
-const sessionSchema = new mongoose.Schema({
-  userId: {
-    type: String,
-    required: true,
+const sessionSchema = new mongoose.Schema(
+  {
+    userId: {
+      type: String,
+      required: true,
+    },
+    accessToken: {
+      type: String,
+      required: true,
+    },
+    refreshToken: {
+      type: String,
+      required: true,
+    },
+    accessTokenValidUntill: {
+      type: Date,
+      required: true,
+    },
+    refreshTokenValidUntill: {
+      type: Date,
+      required: true,
+    },
   },
-  accessToken: {
-    type: String,
-    required: true,
+  {
+    timestamps: true,
+    versionKey: false,
   },
-  refreshToken: {
-    type: String,
-    required: true,
-  },
-  accessTokenValidUntil: {
-    type: Date,
-    required: true,
-  },
-  refreshTokenValidUntil: {
-    type: Date,
-    required: true,
-  },
-});
+);
 
 export const Session = mongoose.model('Session', sessionSchema);
