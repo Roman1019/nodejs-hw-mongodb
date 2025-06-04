@@ -7,6 +7,7 @@ import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import authRouter from './router/auth.js';
 import cookieParser from 'cookie-parser';
+import { authenticate } from './middlewares/authenticate.js';
 
 function setupServer() {
   const app = express();
@@ -15,7 +16,7 @@ function setupServer() {
 
   app.use(pino());
 
-  app.use('/contacts', router);
+  app.use('/contacts', authenticate, router);
   app.use('/auth', authRouter);
 
   app.use(errorHandler);
