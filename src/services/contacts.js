@@ -6,10 +6,13 @@ export async function getAllContactsService({
   sortBy,
   sortOrder,
   filter,
+  userId,
 }) {
   const skip = page > 0 ? (page - 1) * perPage : 0;
 
   const contactQuery = Contact.find();
+
+  contactQuery.where('userId').equals(userId);
 
   if (typeof filter.isFavourite !== 'undefined') {
     contactQuery.where('isFavourite').equals(filter.isFavourite);
