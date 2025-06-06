@@ -42,18 +42,20 @@ export async function getAllContactsService({
   };
 }
 
-export async function getContactById(contactId) {
-  return await Contact.findById(contactId);
+export async function getContactById(contactId, userId) {
+  return await Contact.findById({ _id: contactId, userId });
 }
 
 export async function createContact(payload) {
   return await Contact.create(payload);
 }
 
-export async function updateContact(contactId, payload) {
-  return Contact.findByIdAndUpdate(contactId, payload, { new: true });
+export async function updateContact(contactId, userId, payload) {
+  return Contact.findByIdAndUpdate({ _id: contactId, userId }, payload, {
+    new: true,
+  });
 }
 
-export async function deleteContact(contactId) {
-  return Contact.findByIdAndDelete(contactId);
+export async function deleteContact(contactId, userId) {
+  return Contact.findByIdAndDelete({ _id: contactId, userId });
 }

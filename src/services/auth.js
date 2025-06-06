@@ -31,6 +31,7 @@ export async function loginUser(email, password) {
 
   const accessToken = crypto.randomBytes(30).toString('base64');
   const refreshToken = crypto.randomBytes(30).toString('base64');
+  console.log('🧪 user._id before session creation:', user._id);
 
   return Session.create({
     userId: user._id,
@@ -64,7 +65,7 @@ export async function refreshSession(sessionId, refreshToken) {
   await Session.deleteOne({ _id: session._id });
 
   return Session.create({
-    userId: session._id,
+    userId: session.userId,
     accessToken: crypto.randomBytes(30).toString('base64'),
     refreshToken: crypto.randomBytes(30).toString('base64'),
     accessTokenValidUntill: new Date(Date.now() + 15 * 60 * 60 * 1000),
