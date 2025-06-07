@@ -43,7 +43,7 @@ export async function getAllContactsService({
 }
 
 export async function getContactById(contactId, userId) {
-  return await Contact.findById({ _id: contactId, userId });
+  return await Contact.findOne({ _id: contactId, userId });
 }
 
 export async function createContact(payload) {
@@ -51,11 +51,11 @@ export async function createContact(payload) {
 }
 
 export async function updateContact(contactId, userId, payload) {
-  return Contact.findByIdAndUpdate({ _id: contactId, userId }, payload, {
+  return Contact.findOneAndUpdate({ _id: contactId, userId }, payload, {
     new: true,
   });
 }
 
 export async function deleteContact(contactId, userId) {
-  return Contact.findByIdAndDelete({ _id: contactId, userId });
+  return Contact.findOneAndDelete({ _id: contactId, userId });
 }
