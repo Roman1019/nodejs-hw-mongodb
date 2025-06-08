@@ -41,12 +41,13 @@ export async function getContactsController(req, res) {
 
 export async function getContactByIDController(req, res) {
   const userId = req.user?._id;
+
   if (!userId) {
     throw createHttpError.Unauthorized('User not authenticated');
   }
   const contactId = req.params.contactId;
 
-  const contact = await getContactById(contactId);
+  const contact = await getContactById(contactId, userId);
 
   if (contact === null) {
     throw createError(404, 'Contact not found');
