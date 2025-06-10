@@ -7,7 +7,7 @@ import { Session } from '../models/session.model.js';
 import crypto from 'node:crypto';
 import jwt from 'jsonwebtoken';
 import Handlebars from 'handlebars';
-import { sendMail } from '../utils/SendMail.js';
+import { sendMail } from '../utils/sendMail.js';
 import { getEnvVar } from '../utils/getEnvVar.js';
 
 const RESET_PASSWORD_TEMPLATE = fs.readFileSync(
