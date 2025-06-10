@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import pino from 'pino-http';
 import 'dotenv/config';
+import path from 'node:path';
 import { router } from './router/contacts.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
@@ -11,6 +12,9 @@ import { authenticate } from './middlewares/authenticate.js';
 
 function setupServer() {
   const app = express();
+
+  app.use('/photo', express.static(path.resolve('src', 'uploads', 'photos')));
+
   app.use(cookieParser());
   app.use(cors());
 
