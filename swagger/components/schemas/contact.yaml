@@ -1,0 +1,42 @@
+type: object
+required:
+  - _id
+  - name
+  - phoneNumber
+  - contactType
+  - userId
+properties:
+  _id:
+    type: string
+    description: Contact id
+    example: 507f1f77bcf86cd799439011
+  name:
+    type: string
+    description: Contact name
+    example: Mary
+  phoneNumber:
+    type: string
+    description: Contact number
+    example: '123456789'
+  email:
+    type: string
+    description: Contact email
+    example: teacher10@ukr.net
+  isFavourite:
+    type: boolean
+    description: Contact is favourite
+    example: true
+    default: false
+  contactType:
+    type: string
+    enum: ['work', 'home', 'personal']
+    example: personal
+  userId:
+    type: string
+    description: Student user id
+    example: 507f1f77bcf86cd799439011
+  photo:
+    type: string
+    format: uri
+    description: Contact photo url
+    example: https://res.cloudinary.com/dkr4amnm2/image/upload/v1749672547/tr6uw1ol…
