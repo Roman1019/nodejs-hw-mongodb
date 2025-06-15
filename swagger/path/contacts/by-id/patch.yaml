@@ -1,10 +1,17 @@
 tags:
   - Contacts
 summary: Update Contact
-operationId: Update Contact
+operationId: updateContact
 description: Update contacts
 security:
   - bearerAuth: []
+parameters:
+  - in: path
+    name: id
+    required: true
+    schema:
+      type: string
+      example: 507f1f77bcf86cd799439011
 requestBody:
   content:
     multipart/form-data:
@@ -46,6 +53,6 @@ responses:
               type: string
               example: Contact update successfully
             data:
-              $ref: ../../components/schemas/contact.yaml
+              $ref: ../../../components/schemas/contact.yaml
   '404':
-    $ref: ../../components/responses/404.yaml
+    $ref: ../../../components/responses/404.yaml

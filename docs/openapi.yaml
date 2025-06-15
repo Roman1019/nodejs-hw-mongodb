@@ -11,12 +11,15 @@ tags:
     description: Operations with contacts.
 servers:
   - url: http://localhost:3000
+  - url: https://nodejs-hw-mongodb-1-of8w.onrender.com
 paths:
   /contacts/{id}:
     get:
       $ref: '../swagger/path/contacts/by-id/get.yaml'
     patch:
       $ref: '../swagger/path/contacts/by-id/patch.yaml'
+    delete:
+      $ref: '../swagger/path/contacts/by-id/delete.yaml'
   /contacts:
     get:
       $ref: '../swagger/path/contacts/get.yaml'
