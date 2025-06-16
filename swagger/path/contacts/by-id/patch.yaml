@@ -26,10 +26,23 @@ requestBody:
             type: string
             description: Contact number
             example: '123456789'
+          email:
+            type: string
+            description: Contact email
+            example: teacher10@ukr.net
+          isFavourite:
+            type: boolean
+            description: Contact is favourite
+            example: true
+            default: false
           contactType:
             type: string
             enum: ['work', 'home', 'personal']
             example: personal
+          userId:
+            type: string
+            description: Contact user id
+            example: 507f1f77bcf86cd799439011
           photo:
             type: string
             format: binary
@@ -54,5 +67,23 @@ responses:
               example: Contact update successfully
             data:
               $ref: ../../../components/schemas/contact.yaml
+  '400':
+    description: Bad Request
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+          properties:
+            status:
+              type: integer
+              example: 400
+            message:
+              type: string
+              example: Bad Request
+  '401':
+    $ref: ../../../components/responses/401.yaml
   '404':
     $ref: ../../../components/responses/404.yaml

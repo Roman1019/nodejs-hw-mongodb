@@ -5,6 +5,43 @@ operationId: getAllContacts
 description: Get all Contacts
 security:
   - bearerAuth: []
+parameters:
+  - in: query
+    name: page
+    schema:
+      type: integer
+      default: 1
+    description: Page number
+  - in: query
+    name: perPage
+    schema:
+      type: integer
+      default: 10
+    description: Number of contacts per page
+  - in: query
+    name: sortBy
+    schema:
+      type: string
+      enum: [_id, name]
+    description: Sort contacts by parameters
+  - in: query
+    name: sortOrder
+    schema:
+      type: string
+      enum: [asc, desc]
+    description: Sort contacts by order
+  - in: query
+    name: contactType
+    schema:
+      type: string
+      enum: [work, home, personal]
+    description: Contacts filter type
+  - in: query
+    name: isFavourite
+    schema:
+      type: boolean
+    description: Contacts filter is favourite
+
 responses:
   '200':
     description: Found contact with id
@@ -25,5 +62,7 @@ responses:
               example: Successfully found contacts!
             data:
               $ref: ../../components/schemas/contact.yaml
+  '401':
+    $ref: ../../components/responses/401.yaml
   '404':
     $ref: ../../components/responses/404.yaml

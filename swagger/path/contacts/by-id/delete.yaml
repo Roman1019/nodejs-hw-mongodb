@@ -13,17 +13,9 @@ parameters:
       type: string
       example: 507f1f77bcf86cd799439011
 responses:
-  '200':
-    description: Create a contact
-    content:
-      application/json:
-        schema:
-          type: object
-          required:
-            - status
-          properties:
-            status:
-              type: integer
-              example: 200
+  '204':
+    description: Delete contact
+  '401':
+    $ref: ../../../components/responses/401.yaml
   '404':
     $ref: ../../../components/responses/404.yaml
