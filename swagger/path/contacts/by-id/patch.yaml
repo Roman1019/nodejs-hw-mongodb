@@ -39,10 +39,6 @@ requestBody:
             type: string
             enum: ['work', 'home', 'personal']
             example: personal
-          userId:
-            type: string
-            description: Contact user id
-            example: 507f1f77bcf86cd799439011
           photo:
             type: string
             format: binary
